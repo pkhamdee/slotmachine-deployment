@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: server-config
+  namespace: slotmachine
+data:
+  PORT: "3001"
+  MONGO_URI: mongodb://mongodb:27017/slotmachine
+  SESSION_DURATION: "180"
+  LOBBY_DURATION: "10"
