@@ -2,59 +2,61 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - ../../base
+- ../../base
 
 patches:
-  - patch: |-
-      - op: replace
-        path: /spec/rules/0/host
-        value: slotmachine.example.com
-    target:
-      kind: Ingress
-      name: client
-  - patch: |-
-      - op: replace
-        path: /spec/replicas
-        value: 2
-    target:
-      kind: Deployment
-      name: client
-  - patch: |-
-      - op: replace
-        path: /spec/replicas
-        value: 2
-    target:
-      kind: Deployment
-      name: server
-  - patch: |-
-      - op: replace
-        path: /spec/template/spec/containers/0/resources/limits/cpu
-        value: "1"
-      - op: replace
-        path: /spec/template/spec/containers/0/resources/limits/memory
-        value: 1Gi
-      - op: replace
-        path: /spec/template/spec/containers/0/resources/requests/cpu
-        value: 200m
-      - op: replace
-        path: /spec/template/spec/containers/0/resources/requests/memory
-        value: 256Mi
-    target:
-      kind: Deployment
-      name: server
-  - patch: |-
-      - op: add
-        path: /spec/volumeClaimTemplates/0/spec/resources/requests/storage
-        value: 20Gi
-    target:
-      kind: StatefulSet
-      name: mongodb
+- patch: |-
+    - op: replace
+      path: /spec/rules/0/host
+      value: slotmachine.example.com
+  target:
+    kind: Ingress
+    name: client
+- patch: |-
+    - op: replace
+      path: /spec/replicas
+      value: 2
+  target:
+    kind: Deployment
+    name: client
+- patch: |-
+    - op: replace
+      path: /spec/replicas
+      value: 2
+  target:
+    kind: Deployment
+    name: server
+- patch: |-
+    - op: replace
+      path: /spec/template/spec/containers/0/resources/limits/cpu
+      value: "1"
+    - op: replace
+      path: /spec/template/spec/containers/0/resources/limits/memory
+      value: 1Gi
+    - op: replace
+      path: /spec/template/spec/containers/0/resources/requests/cpu
+      value: 200m
+    - op: replace
+      path: /spec/template/spec/containers/0/resources/requests/memory
+      value: 256Mi
+  target:
+    kind: Deployment
+    name: server
+- patch: |-
+    - op: add
+      path: /spec/volumeClaimTemplates/0/spec/resources/requests/storage
+      value: 20Gi
+  target:
+    kind: StatefulSet
+    name: mongodb
 
 images:
-  - name: slotmachine-client
-    newTag: stable
-  - name: slotmachine-server
-    newTag: stable
+- name: slotmachine-client
+  newName: pkhamdee/slotmachine
+  newTag: client-cbe105dbd94028303c683df5cb584bc731b8ecd4
+- name: slotmachine-server
+  newName: pkhamdee/slotmachine
+  newTag: server-cbe105dbd94028303c683df5cb584bc731b8ecd4
 
 commonLabels:
   environment: production

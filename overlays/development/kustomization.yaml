@@ -4,28 +4,30 @@ kind: Kustomization
 namePrefix: dev-
 
 resources:
-  - ../../base
+- ../../base
 
 patches:
-  - patch: |-
-      - op: replace
-        path: /spec/rules/0/host
-        value: slotmachine.dev.example.com
-    target:
-      kind: Ingress
-      name: client
-  - patch: |-
-      - op: replace
-        path: /spec/replicas
-        value: 1
-    target:
-      kind: Deployment
+- patch: |-
+    - op: replace
+      path: /spec/rules/0/host
+      value: slotmachine.dev.example.com
+  target:
+    kind: Ingress
+    name: client
+- patch: |-
+    - op: replace
+      path: /spec/replicas
+      value: 1
+  target:
+    kind: Deployment
 
 images:
-  - name: slotmachine-client
-    newTag: dev
-  - name: slotmachine-server
-    newTag: dev
+- name: slotmachine-client
+  newName: pkhamdee/slotmachine
+  newTag: client-cbe105dbd94028303c683df5cb584bc731b8ecd4
+- name: slotmachine-server
+  newName: pkhamdee/slotmachine
+  newTag: server-cbe105dbd94028303c683df5cb584bc731b8ecd4
 
 commonLabels:
   environment: development
