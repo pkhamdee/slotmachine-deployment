@@ -11,8 +11,6 @@ spec:
     metadata:
       labels:
         app: server
-      annotations:
-        instrumentation.opentelemetry.io/inject-nodejs: "true"
     spec:
       initContainers:
         - name: wait-for-mongodb
