@@ -5,6 +5,7 @@ resources:
   - mongodb/
   - server/
   - client/
+  - opentelemetry/
 
 commonLabels:
   app.kubernetes.io/part-of: slotmachine
