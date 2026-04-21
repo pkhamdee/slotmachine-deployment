@@ -11,7 +11,7 @@ patches:
 - patch: |-
     - op: replace
       path: /spec/rules/0/host
-      value: slotmachine.example.com
+      value: slotmachine.example.com  #patches host to your production domain
   target:
     kind: Ingress
     name: client
