@@ -1,14 +1,17 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
+namespace: production
+
 resources:
 - ../../base
+- namespace.yaml
 
 patches:
 - patch: |-
     - op: replace
       path: /spec/rules/0/host
-      value: slotmachine.example.com
+      value: slotmachine.10.38.206.19.sslip.io  #patches host to your production domain
   target:
     kind: Ingress
     name: client
@@ -53,10 +56,10 @@ patches:
 images:
 - name: slotmachine-client
   newName: pkhamdee/slotmachine
-  newTag: client-e7524f09641388249c29d28125cdbd5c96d62252
+  newTag: client-b06715fb34fbd73056994e81896b7b7e91c51a6d
 - name: slotmachine-server
   newName: pkhamdee/slotmachine
-  newTag: server-e7524f09641388249c29d28125cdbd5c96d62252
+  newTag: server-b06715fb34fbd73056994e81896b7b7e91c51a6d
 
 commonLabels:
   environment: production
