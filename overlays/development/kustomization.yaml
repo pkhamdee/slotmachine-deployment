@@ -18,10 +18,10 @@ patches:
 images:
 - name: slotmachine-client
   newName: pkhamdee/slotmachine
-  newTag: client-9aa6e5b05d46c9f8bab93a1f4dc737f5ba84233e
+  newTag: client-944f82fe98faa1a4cd7c9fde6691ad38112ce463
 - name: slotmachine-server
   newName: pkhamdee/slotmachine
-  newTag: server-9aa6e5b05d46c9f8bab93a1f4dc737f5ba84233e
+  newTag: server-944f82fe98faa1a4cd7c9fde6691ad38112ce463
 
 commonLabels:
   environment: development
