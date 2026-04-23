@@ -23,22 +23,6 @@ patches:
     kind: Deployment
     name: server
 - patch: |-
-    - op: replace
-      path: /spec/template/spec/containers/0/resources/limits/cpu
-      value: "1"
-    - op: replace
-      path: /spec/template/spec/containers/0/resources/limits/memory
-      value: 1Gi
-    - op: replace
-      path: /spec/template/spec/containers/0/resources/requests/cpu
-      value: 200m
-    - op: replace
-      path: /spec/template/spec/containers/0/resources/requests/memory
-      value: 256Mi
-  target:
-    kind: Deployment
-    name: server
-- patch: |-
     - op: add
       path: /spec/volumeClaimTemplates/0/spec/resources/requests/storage
       value: 20Gi
