@@ -10,13 +10,6 @@ resources:
 patches:
 - patch: |-
     - op: replace
-      path: /spec/rules/0/host
-      value: slotmachine.10.38.206.19.sslip.io  #patches host to your production domain
-  target:
-    kind: Ingress
-    name: client
-- patch: |-
-    - op: replace
       path: /spec/replicas
       value: 2
   target:
@@ -52,6 +45,15 @@ patches:
   target:
     kind: StatefulSet
     name: mongodb
+- patch: |-
+    - op: add
+      path: /metadata/annotations
+      value:
+        service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+        service.beta.kubernetes.io/aws-load-balancer-type: external
+  target:
+    kind: Service
+    name: client
 
 images:
 - name: slotmachine-client
