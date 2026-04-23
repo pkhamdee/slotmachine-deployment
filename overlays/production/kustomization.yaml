@@ -11,14 +11,14 @@ patches:
 - patch: |-
     - op: replace
       path: /spec/replicas
-      value: 1
+      value: 4
   target:
     kind: Deployment
     name: client
 - patch: |-
     - op: replace
       path: /spec/replicas
-      value: 1
+      value: 4
   target:
     kind: Deployment
     name: server
