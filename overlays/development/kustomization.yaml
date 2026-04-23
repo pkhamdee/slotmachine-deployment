@@ -11,7 +11,7 @@ patches:
 - patch: |-
     - op: replace
       path: /spec/rules/0/host
-      value: slotmachine-dev.10.38.206.19.sslip.io  #patches host to slotmachine.<dev-lb-ip>.sslip.io
+      value: slotmachine-dev.10.7.48.70.sslip.io  #patches host to slotmachine.<dev-lb-ip>.sslip.io
   target:
     kind: Ingress
     name: client
@@ -25,10 +25,10 @@ patches:
 images:
 - name: slotmachine-client
   newName: pkhamdee/slotmachine
-  newTag: client-b06715fb34fbd73056994e81896b7b7e91c51a6d
+  newTag: client-9aa6e5b05d46c9f8bab93a1f4dc737f5ba84233e
 - name: slotmachine-server
   newName: pkhamdee/slotmachine
-  newTag: server-b06715fb34fbd73056994e81896b7b7e91c51a6d
+  newTag: server-9aa6e5b05d46c9f8bab93a1f4dc737f5ba84233e
 
 commonLabels:
   environment: development
