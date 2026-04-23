@@ -11,7 +11,7 @@ patches:
 - patch: |-
     - op: replace
       path: /spec/rules/0/host
-      value: slotmachine-dev.10.38.206.19.sslip.io  #patches host to slotmachine.<dev-lb-ip>.sslip.io
+      value: slotmachine-dev.10.7.48.70.sslip.io  #patches host to slotmachine.<dev-lb-ip>.sslip.io
   target:
     kind: Ingress
     name: client
