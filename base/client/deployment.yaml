@@ -12,6 +12,13 @@ spec:
       labels:
         app: client
     spec:
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: DoNotSchedule
+          labelSelector:
+            matchLabels:
+              app: client
       containers:
         - name: client
           image: slotmachine-client:latest
