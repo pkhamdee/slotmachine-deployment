@@ -44,6 +44,32 @@ patches:
     name: mongodb
 - patch: |-
     - op: add
+      path: /spec/template/spec/containers/0/resources
+      value:
+        requests:
+          cpu: 500m
+          memory: 512Mi
+        limits:
+          cpu: 2000m
+          memory: 1Gi
+  target:
+    kind: StatefulSet
+    name: mongodb
+- patch: |-
+    - op: add
+      path: /spec/template/spec/containers/0/resources
+      value:
+        requests:
+          cpu: 100m
+          memory: 128Mi
+        limits:
+          cpu: 500m
+          memory: 256Mi
+  target:
+    kind: Deployment
+    name: redis
+- patch: |-
+    - op: add
       path: /metadata/annotations
       value:
         service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
